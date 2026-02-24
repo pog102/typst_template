@@ -9,8 +9,9 @@
   #set text(font: "Times New Roman", lang: "lt")
   #align(center + top)[
     #image("assets/kvk.png", width: 18em)
-    #text("Klaipėdos Valstybinė Kolegija", size: 18pt, weight: "bold") \
-    #text("Informatikos Inžinėrijos Katedra", size: 16pt) \
+    #text("KLAIPĖDOS VALSTYBINĖ KOLEGIJA", size: 15pt, weight: "bold") \
+    #text("technologijų fakultetas", size: 15pt,weight: "bold") \
+    #text("Informatikos ir biotechnologijų katedra", size: 15pt,weight: "bold") \
   ]
   #align(center + horizon)[
     // #text("Studijos Dalyko", size: 29pt) \
