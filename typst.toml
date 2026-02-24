@@ -1,0 +1,4 @@
+[package]
+name = "kvk"
+version = "0.1.0"
+entrypoint = "style.typ"
