@@ -211,14 +211,15 @@ set text(fontsize)
   //   inset: 4pt,
   // )
   // [
-  #block(
-    breakable: false,
-    width: 100%,
-    spacing: 0pt,
-    inset: (x: 0.5em, y: 0.5em),
-  )[
-    #align(left, [#text(weight: "semibold")[#caption]])
-  ]
+  // #block(
+  //   breakable: false,
+  //   width: 100%,
+  //   spacing: 0pt,
+  //   inset: (x: 0.5em, y: 0.5em),
+  //   // fill: accent.lighten(intensity),
+  // )[
+  //   #align(left, [#text(weight: "bold",fill: accent)[#caption]])
+  // ]
 
   #block(
     width: 100%,
@@ -226,12 +227,31 @@ set text(fontsize)
     fill: accent.lighten(intensity),
     radius: 10pt,
     inset: (x: 0.5em, y: 0.65em),
+    
   )[
+    #set text(
+    font: "Courier Prime Code",
+    size: 12pt
+  )
     #cbody
   ]
   // ]
 ]
 
+
+
+#let button(name)= [
+  #box(
+  // fill: accent,
+  radius: 5pt,
+  stroke: 1pt+accent,
+  // width: fit-content,
+  inset: (x: 0.8em, y: 0.24em),
+)[
+  #text(font: "Times New Roman", lang: "lt")[#name]
+  // [Block]
+]
+]
 #let code(path, caption: none) = [
   #if type(path) == str [
     #let file = path.split("/").at(-1)
