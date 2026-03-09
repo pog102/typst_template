@@ -1,5 +1,6 @@
 #let intensity = 74%
 #let accent = rgb("#0b93b7")
+#let bold = rgb("#7644c8")
 #let fontsize=14pt
 // #let conf(colo) = [
 //   let color = colo
@@ -7,6 +8,7 @@
 // #let intensity = 13%
 #let Cover(subject, assigment, author: "Ernestas Damanskis", lecturer, doc) = [
   #set text(font: "Times New Roman", lang: "lt")
+  #show strong: set text(fill: bold )
   #align(center + top)[
     #image("assets/kvk.png", width: 18em)
     #text("KLAIPĖDOS VALSTYBINĖ KOLEGIJA", size: 15pt, weight: "bold") \
