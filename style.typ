@@ -2,6 +2,7 @@
 #import "@preview/suiji:0.5.1":*
 #let intensity = 74%
 #let accent = rgb("#0b93b7")
+// #let accent = yellow
 #let bold = rgb("#7644c8")
 #let fontsize=14pt
 // #let conf(colo) = [
@@ -10,32 +11,38 @@
 )
 #let Cover(subject, assigment, author: "Ernestas Damanskis", lecturer, doc) = [
   #set text(font: "Times New Roman", lang: "lt")
-  #let date_seed=177
-  // #let date_seed = datetime.today().year() + datetime.today().month() + datetime.today().day()
-  #let rng = gen-rng-f(date_seed)
-        // "Klaipėda, " + str(datetime.today().display("[year]")),
-  #let (rng, h1) = uniform(rng, low: 10, high: 50)
-#let (rng, h2) = uniform(rng, low: 10, high: 50)
-#let (rng, h3) = uniform(rng, low: 10, high: 50)
-#let (rng, h4) = uniform(rng, low: 10, high: 50)
+  #let date_seed =  datetime.today().day()+datetime.today().month()+datetime.today().year()
+  // #let date_seed =  datetime.today().year() 
+  // #let date_seed=112
+// 1. Initialize the seed
+#let rng = gen-rng(date_seed) 
+
+// 2. Correct call for suiji 0.5.1: uniform(rng, low: x, high: y)
+#let (rng, r1) = uniform(rng, low: -2.0, high: 5.0)
+#let (rng, r2) = uniform(rng, low: 5.0, high: 15.0)
+#let (rng, r3) = uniform(rng, low: -8.0, high: -2.0)
+#let (rng, r4) = uniform(rng, low: 10.0, high: 20.0)
+
+// 3. Application
+#let h-base = 10 
+#let h1 = h-base + r1
+#let h2 = h1 + r2 
+#let h3 = h2 + r3
+#let h4 = h3 + r4
+
 #place(
-    bottom+left,
-  dx: -1in, // Move left by the exact margin amount
-  dy: 1in, // Move up by the exact margin amount
-    curve(
-  // fill: accent.lighten(85%),
-      fill: gradient.linear(accent.lighten(94%), accent.lighten(59%), angle: 0deg),
-  // stroke: blue,
-      curve.move((0%, 0pt)),
-    curve.line((0%, -h1*1%)),
-
-    curve.cubic((15%+2in,-h1*1%), (15%+2in,-h2*1%), (33%+2in,-h2*1%)),
-    curve.cubic((50%+2in,-h2*1%), (50%+2in,-h3*1%), (66%+2in,-h3*1%)),
-    curve.cubic((85%+2in,-h3*1%), (85%+2in,-h4*1%), (100%+2in, -h4*1%)),
-
-    // Close the shape back to the top-right
-    curve.line((100%+2in, 0%)),
-)
+  bottom + left,
+  dx: -1in, 
+  dy: 1in,
+  curve(
+    fill: gradient.linear(accent.lighten(94%), accent.lighten(67%), angle: 0deg),
+    curve.move((0%, 0pt)),
+    curve.line((0%, -h1 * 1%)),
+    curve.cubic((15% + 2in, -h1 * 1%), (15% + 2in, -h2 * 1%), (33% + 2in, -h2 * 1%)),
+    curve.cubic((50% + 2in, -h2 * 1%), (50% + 2in, -h3 * 1%), (66% + 2in, -h3 * 1%)),
+    curve.cubic((85% + 2in, -h3 * 1%), (85% + 2in, -h4 * 1%), (100% + 2in, -h4 * 1%)),
+    curve.line((100% + 2in, 0%)),
+  )
 )
   #show strong: set text(fill: bold.darken(50%) )
   #align(center + top)[
