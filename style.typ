@@ -181,7 +181,30 @@
 
   #pagebreak()
 
-  #set page(numbering: "1")
+  // #set page(numbering: "1")
+  #set page(
+  // Clear the default numbering so it doesn't double up
+  numbering: none, 
+  // Manually define the footer
+  footer: context {
+    place(right + bottom, dx: 1in,dy: -1em)[
+      #rect(
+        width: 0.7in, 
+        // height: 1em, 
+        radius: (
+          top-left: 10pt,
+          bottom-left: 10pt,
+        ),
+        fill: accent.lighten(72%),
+    inset: (x: 0.6em, y: 0.2em),
+        align(left + horizon)[
+
+          #counter(page).display()
+        ]
+      )
+    ]
+  }
+)
   #set page(header: text(luma(94))[
     #grid(
       columns: (1fr, 1fr),
@@ -239,6 +262,21 @@ set text(fontsize)
     }
   }
   doc
+  set page(header: none,numbering: none,footer:none,fill: accent)
+set text(fill: rgb("fdfdfd"))
+  pagebreak()
+  align(center+horizon)[
+        #image("assets/kvk_mini_white.png", width: 12em)
+
+    #align(center)[
+      #text(
+       str(datetime.today().display("[year]")),
+        size: 18pt,
+        weight: "bold",
+      )
+    ]
+  ]
+
 }
 #let output(caption: "Rezultatas: ", cbody) = [
   // #block(
