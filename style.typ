@@ -240,13 +240,31 @@ set text(fontsize)
 
 
 
+#let key(name)= [
+  #box(
+  fill: accent.lighten(intensity),
+  radius: 5pt,
+  stroke: 1pt+accent,
+  // width: fit-content,
+  // inset: (x: 0.5em, y: 0.25em),
+  inset: (x: 0.5em),
+  outset: ( y: 0.24em),
+)[
+    #if name == "Win" {
+    name = " "
+    } 
+  #text(font: "Times New Roman", lang: "lt")[#name]
+  // [Block]
+]
+]
 #let button(name)= [
   #box(
   // fill: accent,
   radius: 5pt,
   stroke: 1pt+accent,
   // width: fit-content,
-  inset: (x: 0.8em, y: 0.24em),
+  inset: (x: 0.8em),
+  outset: ( y: 0.24em),
 )[
   #text(font: "Times New Roman", lang: "lt")[#name]
   // [Block]
