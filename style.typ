@@ -11,9 +11,10 @@
 )
 #let Cover(subject, assigment, author: "Ernestas Damanskis", lecturer, doc) = [
   #set text(font: "Times New Roman", lang: "lt")
-  #let date_seed =  datetime.today().day()+datetime.today().month()+datetime.today().year()
+  // #let date_seed =  datetime.today().day()+datetime.today().month()*30+datetime.today().year()*365
+  #let date_seed =  datetime.today().day()+datetime.today().month()*30
   // #let date_seed =  datetime.today().year() 
-  // #let date_seed=112
+  // #let date_seed=159
 // 1. Initialize the seed
 #let rng = gen-rng(date_seed) 
 
